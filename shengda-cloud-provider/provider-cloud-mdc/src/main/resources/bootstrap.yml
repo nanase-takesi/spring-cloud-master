@@ -1,0 +1,31 @@
+server:
+  port: 9091
+spring:
+  application:
+    name: provider-cloud-mdc
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        file-extension: yaml
+        shared-dataids: application.yaml
+        refreshable-dataids: application.yaml
+          # ext-config:
+          # - data-id: application-mdc.yaml
+        # refresh: true
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+      discovery:
+        namespace: 4b96e584-79b6-4812-a1fe-1c5a4bf59ce5
+        server-addr: 127.0.0.1:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+logging:
+  config: classpath:logback-spring.xml

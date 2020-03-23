@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shengda-cloud-provider</artifactId>
+    <packaging>pom</packaging>
+    <name>shengda-cloud-provider</name>
+    <description>聖大微服务架构 ---- 服务提供模块</description>
+
+    <parent>
+        <groupId>com.shengda</groupId>
+        <artifactId>spring-cloud-master</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>provider-cloud-mdc</module>
+    </modules>
+
+    <properties>
+        <docker-maven-plugin.version>1.2.0</docker-maven-plugin.version>
+        <docker.baseImage>openjdk:8-jre-alpine</docker.baseImage>
+        <docker.volumes>/tmp</docker.volumes>
+        <docker.image.prefix>registry.cn-hangzhou.aliyuncs.com/shengda</docker.image.prefix>
+        <docker.java.security.egd>-Djava.security.egd=file:/dev/./urandom</docker.java.security.egd>
+        <docker.java.opts>-Xms128m -Xmx128m</docker.java.opts>
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>shengda-cloud-provider</finalName>
+    </build>
+
+</project>

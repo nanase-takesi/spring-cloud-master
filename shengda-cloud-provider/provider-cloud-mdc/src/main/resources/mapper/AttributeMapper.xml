@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.AttributeMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Attribute">
+        <!--@mbg.generated-->
+        <!--@Table mdc_attribute-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="category_id" jdbcType="BIGINT" property="categoryId"/>
+        <result column="select_type" jdbcType="SMALLINT" property="selectType"/>
+        <result column="input_type" jdbcType="BOOLEAN" property="inputType"/>
+        <result column="input_list" jdbcType="VARCHAR" property="inputList"/>
+        <result column="filter_type" jdbcType="BOOLEAN" property="filterType"/>
+        <result column="search_type" jdbcType="SMALLINT" property="searchType"/>
+        <result column="is_related" jdbcType="BOOLEAN" property="isRelated"/>
+        <result column="is_hand_add" jdbcType="BOOLEAN" property="isHandAdd"/>
+        <result column="type" jdbcType="BOOLEAN" property="type"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="state" jdbcType="BOOLEAN" property="state"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, category_id, select_type, input_type, input_list, filter_type, search_type,
+        is_related, is_hand_add, `type`, sort, `state`, create_time, update_time, version
+    </sql>
+</mapper>

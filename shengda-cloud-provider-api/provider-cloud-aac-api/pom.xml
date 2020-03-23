@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>provider-cloud-aac-api</artifactId>
+    <packaging>jar</packaging>
+    <name>provider-cloud-aac-api</name>
+    <description>聖大微服务架构 ---- 后台管理中心api</description>
+
+    <parent>
+        <groupId>com.shengda</groupId>
+        <artifactId>shengda-cloud-provider-api</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.shengda</groupId>
+            <artifactId>common-base</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>provider-cloud-aac-api</finalName>
+    </build>
+
+</project>

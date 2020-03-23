@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.shengda.oauth2.Oauth2PropertiesConfigurer

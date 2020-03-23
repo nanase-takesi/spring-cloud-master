@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.CategoryMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Category">
+        <!--@mbg.generated-->
+        <!--@Table mdc_category-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="level" jdbcType="SMALLINT" property="level"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="keyword" jdbcType="VARCHAR" property="keyword"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="description" jdbcType="LONGVARCHAR" property="description"/>
+        <result column="state" jdbcType="BOOLEAN" property="state"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, `level`, unit, icon, keyword, parent_id, sort, description, `state`,
+        create_time, update_time, version
+    </sql>
+</mapper>

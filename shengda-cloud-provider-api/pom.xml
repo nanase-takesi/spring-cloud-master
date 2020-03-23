@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shengda-cloud-provider-api</artifactId>
+    <packaging>pom</packaging>
+    <name>shengda-cloud-provider-api</name>
+    <description>聖大微服务架构 ---- 服务提供模块api</description>
+
+    <parent>
+        <groupId>com.shengda</groupId>
+        <artifactId>spring-cloud-master</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>provider-cloud-aac-api</module>
+        <module>provider-cloud-mac-api</module>
+        <module>provider-cloud-mdc-api</module>
+        <module>provider-cloud-uac-api</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>provider-cloud-aac-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>provider-cloud-mac-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>provider-cloud-mdc-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>provider-cloud-uac-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>shengda-commons</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>shengda-cloud-provider-api</finalName>
+    </build>
+
+</project>

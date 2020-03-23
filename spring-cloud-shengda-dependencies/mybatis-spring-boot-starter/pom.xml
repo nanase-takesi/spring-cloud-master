@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <packaging>jar</packaging>
+    <name>mybatis-spring-boot-starter</name>
+    <description>聖大微服务架构 ---- 自定义starter组件</description>
+
+    <parent>
+        <groupId>com.shengda</groupId>
+        <artifactId>spring-cloud-shengda-dependencies</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.shengda</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shengda</groupId>
+            <artifactId>common-utils</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>mybatis-spring-boot-starter</finalName>
+    </build>
+
+</project>
