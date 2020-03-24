@@ -1,8 +1,12 @@
 package com.shengda.util;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.core.Converter;
 
@@ -12,7 +16,20 @@ import org.springframework.cglib.core.Converter;
  */
 public final class CachedBeanCopierUtils {
 
+    private static final Logger logger = LoggerFactory.getLogger(CachedBeanCopierUtils.class);
+
     private static final Map<String, BeanCopier> BEAN_COPIERS = new HashMap<>();
+
+    public static <T> T copyBean(Object source, Class<T> target) {
+        try {
+            T newInstance = target.getDeclaredConstructor().newInstance();
+            copy(source, newInstance);
+            return newInstance;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 
     public static void copy(Object srcObj, Object targetObj) {
         copy(srcObj, targetObj, false, null);

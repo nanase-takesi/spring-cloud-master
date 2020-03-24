@@ -15,6 +15,7 @@
 
     <modules>
         <module>provider-cloud-mdc</module>
+        <module>provider-cloud-uac</module>
     </modules>
 
     <properties>

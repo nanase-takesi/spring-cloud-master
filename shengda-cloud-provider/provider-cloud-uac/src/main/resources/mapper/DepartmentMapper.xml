@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Department">
+        <!--@mbg.generated-->
+        <!--@Table uac_department-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="short_name" jdbcType="VARCHAR" property="shortName"/>
+        <result column="manager_id" jdbcType="BIGINT" property="managerId"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="state" jdbcType="BOOLEAN" property="state"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, short_name, manager_id, parent_id, sort, `state`, create_time, update_time,
+        version
+    </sql>
+
+    <select id="queryAll" resultType="com.shengda.vo.DepartmentVo" parameterType="java.lang.Boolean">
+        select * from uac_department where state = #{state,jdbcType=BOOLEAN}
+    </select>
+</mapper>
