@@ -17,7 +17,12 @@
         <module>common-base</module>
         <module>common-core</module>
         <module>common-utils</module>
+        <module>common-zk</module>
     </modules>
+
+    <properties>
+        <curator-client.version>4.0.1</curator-client.version>
+    </properties>
 
     <dependencies>
 
@@ -29,6 +34,11 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-client</artifactId>
+                <version>${curator-client.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shengda</groupId>
@@ -43,6 +53,11 @@
             <dependency>
                 <groupId>com.shengda</groupId>
                 <artifactId>common-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>common-zk</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
