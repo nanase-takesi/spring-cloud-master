@@ -44,9 +44,14 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     }
 
     @Override
-    public void update(PositionUpdateDto positionUpdateDto) {
-        Position position = CachedBeanCopierUtils.copyBean(positionUpdateDto, Position.class);
-        positionMapper.updateById(position);
+    public void update(Long id, PositionUpdateDto positionUpdateDto) {
+        Position position = positionMapper.selectById(id);
+        if (!Objects.isNull(position)) {
+            CachedBeanCopierUtils.copy(positionUpdateDto, position);
+            positionMapper.updateById(position);
+        } else {
+            throw new UacBizException(UacBizErrorCode.RESOURCE_NOT_FOUNT);
+        }
     }
 
     @Override

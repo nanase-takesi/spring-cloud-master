@@ -45,9 +45,9 @@ public class PositionController extends BaseController {
         return WrapMapper.ok();
     }
 
-    @PutMapping(value = "/update")
-    public Wrapper updatePosition(@RequestBody PositionUpdateDto positionUpdateDto) {
-        positionService.update(positionUpdateDto);
+    @PutMapping(value = "/{id}/update")
+    public Wrapper updatePosition(@PathVariable Long id, @RequestBody PositionUpdateDto positionUpdateDto) {
+        positionService.update(id, positionUpdateDto);
         return WrapMapper.ok();
     }
 
@@ -57,7 +57,7 @@ public class PositionController extends BaseController {
         return WrapMapper.ok(positionVo);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/{id}/delete")
     public Wrapper deletePosition(@PathVariable Long id) {
         positionService.delete(id);
         return WrapMapper.ok();

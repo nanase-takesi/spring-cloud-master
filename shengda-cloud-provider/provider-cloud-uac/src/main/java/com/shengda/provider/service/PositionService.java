@@ -32,9 +32,10 @@ public interface PositionService extends IService<Position> {
     /**
      * 更新岗位
      *
+     * @param id                id
      * @param positionUpdateDto positionUpdateDto
      */
-    void update(PositionUpdateDto positionUpdateDto);
+    void update(Long id, PositionUpdateDto positionUpdateDto);
 
     /**
      * 查询岗位信息
