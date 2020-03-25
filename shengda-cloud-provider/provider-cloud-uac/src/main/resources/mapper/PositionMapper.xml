@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.PositionMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Position">
+        <!--@mbg.generated-->
+        <!--@Table uac_position-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="state" jdbcType="BOOLEAN" property="state"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, remark, sort, `state`, create_time, update_time, version
+    </sql>
+
+    <select id="queryPosition" resultType="com.shengda.vo.PositionVo">
+        select * from uac_position
+        <where>
+            state = #{query.state,jdbcType=BOOLEAN}
+            <if test="query.name != null and query.name != ''">
+                and name like concat('%', #{query.name,jdbcType=VARCHAR}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryById" resultType="com.shengda.vo.PositionVo">
+        select * from uac_position
+        <where>
+            id = #{id,jdbcType=BIGINT}
+        </where>
+    </select>
+</mapper>
