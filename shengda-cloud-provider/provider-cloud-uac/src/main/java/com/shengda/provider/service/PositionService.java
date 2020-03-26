@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.shengda.query.PositionQuery;
 import com.shengda.vo.PositionVo;
 
+import java.util.List;
+
 /**
  * @author takesi
  * @date 2020-03-24
@@ -51,4 +53,11 @@ public interface PositionService extends IService<Position> {
      * @param id id
      */
     void delete(Long id);
+
+    /**
+     * 批量删除岗位信息
+     *
+     * @param ids ids
+     */
+    void batchDelete(List<Long> ids);
 }

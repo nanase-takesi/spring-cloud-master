@@ -17,6 +17,7 @@ import com.shengda.vo.PositionVo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -68,5 +69,10 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
         } else {
             throw new UacBizException(UacBizErrorCode.RESOURCE_NOT_FOUNT);
         }
+    }
+
+    @Override
+    public void batchDelete(List<Long> ids) {
+        positionMapper.batchUpdate(PositionState.DISABLE.getValue(), ids);
     }
 }

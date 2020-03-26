@@ -8,6 +8,8 @@ import com.shengda.vo.PositionVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author takesi
  * @date 2020-03-24
@@ -31,4 +33,13 @@ public interface PositionMapper extends BaseMapper<Position> {
      * @return PositionVo
      */
     PositionVo queryById(@Param("id") Long id);
+
+    /**
+     * 批量删除
+     *
+     * @param state state
+     * @param ids   ids
+     * @return int
+     */
+    int batchUpdate(@Param("state") boolean state, @Param("ids") List<Long> ids);
 }

@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author takesi
  * @date 2020-03-24
@@ -60,6 +62,12 @@ public class PositionController extends BaseController {
     @DeleteMapping(value = "/{id}/delete")
     public Wrapper deletePosition(@PathVariable Long id) {
         positionService.delete(id);
+        return WrapMapper.ok();
+    }
+
+    @DeleteMapping(value = "/batch/delete")
+    public Wrapper batchDeletePosition(@RequestBody List<Long> ids) {
+        positionService.batchDelete(ids);
         return WrapMapper.ok();
     }
 
