@@ -1,2 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.shengda.oauth2.Oauth2PropertiesConfigurer
+com.shengda.oauth2.Oauth2PropertiesConfigurer,\
+com.shengda.oauth2.store.AuthDbTokenStore,\
+com.shengda.oauth2.store.AuthRedisTokenStore,\
+com.shengda.oauth2.store.AuthJwtTokenStore,\
+com.shengda.oauth2.store.ResJwtTokenStore

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.User">
+        <!--@mbg.generated-->
+        <!--@Table uac_user-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="sex" jdbcType="BOOLEAN" property="sex"/>
+        <result column="enabled" jdbcType="BOOLEAN" property="enabled"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="company" jdbcType="VARCHAR" property="company"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="is_del" jdbcType="BOOLEAN" property="isDel"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, username, `password`, nickname, head_img_url, mobile, sex, enabled, `type`, company,
+        open_id, is_del, create_time, update_time, version
+    </sql>
+    <select id="queryByUsername" resultType="com.shengda.vo.UserVo" parameterType="java.lang.String">
+        select * from uac_user
+        <where>
+            username = #{username,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="queryByMobile" resultType="com.shengda.vo.UserVo" parameterType="java.lang.String">
+        select * from uac_user
+        <where>
+            mobile = #{mobile,jdbcType=VARCHAR}
+        </where>
+    </select>
+</mapper>

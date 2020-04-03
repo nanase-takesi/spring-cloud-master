@@ -8,7 +8,7 @@ import com.aliyun.oss.model.PolicyConditions;
 import com.shengda.storage.core.properties.AliyunOssProperties;
 import com.shengda.storage.domain.OssCallbackResult;
 import com.shengda.storage.domain.OssPolicyResult;
-import com.shengda.storage.service.OssStorageService;
+import com.shengda.storage.service.AliyunOssStorageService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +26,9 @@ import java.util.Date;
  */
 @Component
 @AllArgsConstructor
-public class OssStorageServiceImpl implements OssStorageService {
+public class AliyunOssStorageServiceImpl implements AliyunOssStorageService {
 
-    private static final Logger logger = LoggerFactory.getLogger(OssStorageServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(AliyunOssStorageServiceImpl.class);
 
     private final OSS ossClient;
 

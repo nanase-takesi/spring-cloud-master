@@ -23,4 +23,15 @@ public class SecurityProperties implements Serializable {
 
     private ValidateCodeProperties code = new ValidateCodeProperties();
 
+    public void setAuth(AuthProperties auth) {
+        this.auth = auth;
+    }
+
+    public void setIgnore(PermitProperties ignore) {
+        this.ignore = ignore;
+    }
+
+    public void setCode(ValidateCodeProperties code) {
+        this.code = code;
+    }
 }

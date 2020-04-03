@@ -44,6 +44,10 @@
             <groupId>com.shengda</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.shengda</groupId>
+            <artifactId>common-utils</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

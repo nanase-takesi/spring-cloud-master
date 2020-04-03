@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author takesi
  * @date 2020-03-17
  */
-public interface OssStorageService {
+public interface AliyunOssStorageService {
 
     /**
      * oss上传策略生成

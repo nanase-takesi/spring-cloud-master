@@ -18,6 +18,7 @@
         <module>auth-client-spring-cloud-starter</module>
         <module>mybatis-spring-boot-starter</module>
         <module>redis-spring-boot-starter</module>
+        <module>sentinel-spring-cloud-starter</module>
         <module>storage-spring-boot-starter</module>
     </modules>
 
@@ -58,6 +59,11 @@
             <dependency>
                 <groupId>com.shengda</groupId>
                 <artifactId>redis-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shengda</groupId>
+                <artifactId>sentinel-spring-cloud-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

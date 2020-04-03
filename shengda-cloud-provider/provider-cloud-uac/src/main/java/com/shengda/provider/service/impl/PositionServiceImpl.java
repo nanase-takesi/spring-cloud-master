@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shengda.dto.PositionDto;
-import com.shengda.dto.PositionUpdateDto;
 import com.shengda.enums.UacBizErrorCode;
 import com.shengda.exception.UacBizException;
 import com.shengda.provider.mapper.PositionMapper;
@@ -45,10 +44,10 @@ public class PositionServiceImpl extends ServiceImpl<PositionMapper, Position> i
     }
 
     @Override
-    public void update(Long id, PositionUpdateDto positionUpdateDto) {
+    public void update(Long id, PositionDto positionDto) {
         Position position = positionMapper.selectById(id);
         if (!Objects.isNull(position)) {
-            CachedBeanCopierUtils.copy(positionUpdateDto, position);
+            CachedBeanCopierUtils.copy(positionDto, position);
             positionMapper.updateById(position);
         } else {
             throw new UacBizException(UacBizErrorCode.RESOURCE_NOT_FOUNT);

@@ -1,10 +1,9 @@
 package com.shengda.provider.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.shengda.dto.PositionDto;
-import com.shengda.dto.PositionUpdateDto;
-import com.shengda.provider.model.domain.Position;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shengda.dto.PositionDto;
+import com.shengda.provider.model.domain.Position;
 import com.shengda.query.PositionQuery;
 import com.shengda.vo.PositionVo;
 
@@ -35,9 +34,9 @@ public interface PositionService extends IService<Position> {
      * 更新岗位
      *
      * @param id                id
-     * @param positionUpdateDto positionUpdateDto
+     * @param positionDto positionDto
      */
-    void update(Long id, PositionUpdateDto positionUpdateDto);
+    void update(Long id, PositionDto positionDto);
 
     /**
      * 查询岗位信息

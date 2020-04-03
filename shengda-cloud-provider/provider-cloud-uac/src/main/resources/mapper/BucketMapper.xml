@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.BucketMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Bucket">
+        <!--@mbg.generated-->
+        <!--@Table uac_bucket-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="SMALLINT" property="type"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, `type`, remark, create_time, update_time, version
+    </sql>
+
+    <select id="queryBucket" resultType="com.shengda.vo.BucketVo">
+        select * from uac_bucket
+        <where>
+            1 = 1
+            <if test="query.name != null and query.name != ''">
+                and name like concat('%', #{query.name,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="query.type != null">
+                and type = #{query.type,jdbcType=SMALLINT}
+            </if>
+        </where>
+    </select>
+</mapper>

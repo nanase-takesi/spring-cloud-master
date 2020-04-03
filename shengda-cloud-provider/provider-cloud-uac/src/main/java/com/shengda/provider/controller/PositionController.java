@@ -7,7 +7,6 @@ import com.shengda.base.wrapper.WrapMapper;
 import com.shengda.base.wrapper.Wrapper;
 import com.shengda.core.support.BaseController;
 import com.shengda.dto.PositionDto;
-import com.shengda.dto.PositionUpdateDto;
 import com.shengda.provider.service.PositionService;
 import com.shengda.query.PositionQuery;
 import com.shengda.vo.PositionVo;
@@ -38,19 +37,19 @@ public class PositionController extends BaseController {
     public PageWrapper listPosition(PositionQuery positionQuery) {
         IPage<PositionVo> result = positionService.list(positionQuery);
         return PageWrapMapper.wrap(result.getRecords(),
-                result.getCurrent(), result.getPages(), result.getTotal());
+                result.getCurrent(), result.getSize(), result.getTotal());
     }
 
     @PostMapping(value = "/add")
-    public Wrapper addPosition(@RequestBody PositionDto positionDto) {
+    public Wrapper<String> addPosition(@RequestBody PositionDto positionDto) {
         positionService.add(positionDto);
-        return WrapMapper.ok();
+        return WrapMapper.ok("添加成功");
     }
 
     @PutMapping(value = "/{id}/update")
-    public Wrapper updatePosition(@PathVariable Long id, @RequestBody PositionUpdateDto positionUpdateDto) {
-        positionService.update(id, positionUpdateDto);
-        return WrapMapper.ok();
+    public Wrapper<String> updatePosition(@PathVariable Long id, @RequestBody PositionDto positionDto) {
+        positionService.update(id, positionDto);
+        return WrapMapper.ok("更新成功");
     }
 
     @GetMapping(value = "/{id}")
@@ -60,9 +59,9 @@ public class PositionController extends BaseController {
     }
 
     @DeleteMapping(value = "/{id}/delete")
-    public Wrapper deletePosition(@PathVariable Long id) {
+    public Wrapper<String> deletePosition(@PathVariable Long id) {
         positionService.delete(id);
-        return WrapMapper.ok();
+        return WrapMapper.ok("删除成功");
     }
 
     @DeleteMapping(value = "/batch/delete")

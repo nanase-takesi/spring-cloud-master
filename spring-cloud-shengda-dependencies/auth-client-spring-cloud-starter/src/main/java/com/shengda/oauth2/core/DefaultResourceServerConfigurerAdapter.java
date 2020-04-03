@@ -3,11 +3,14 @@ package com.shengda.oauth2.core;
 import com.shengda.oauth2.core.handler.DefaultSecurityHandler;
 import com.shengda.oauth2.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
@@ -21,6 +24,9 @@ import javax.annotation.Resource;
  * @author takesi
  * @date 2020-03-18
  */
+@Configuration
+@EnableResourceServer
+@ConditionalOnMissingClass
 @Import(DefaultSecurityHandler.class)
 public class DefaultResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
 

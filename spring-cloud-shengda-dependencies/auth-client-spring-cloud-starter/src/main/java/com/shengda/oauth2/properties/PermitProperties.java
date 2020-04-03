@@ -1,7 +1,5 @@
 package com.shengda.oauth2.properties;
 
-import lombok.Getter;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +11,6 @@ import java.util.List;
  * @author takesi
  * @date 2020-01-31
  */
-@Getter
 public class PermitProperties implements Serializable {
 
     private static final long serialVersionUID = 1173144183072814294L;

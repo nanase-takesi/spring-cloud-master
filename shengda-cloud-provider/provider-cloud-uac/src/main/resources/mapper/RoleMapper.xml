@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Role">
+        <!--@mbg.generated-->
+        <!--@Table uac_role-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="tenant_id" jdbcType="VARCHAR" property="tenantId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, code, `name`, tenant_id, create_time, update_time, version
+    </sql>
+    <select id="queryByUserId" resultType="com.shengda.vo.RoleVo" parameterType="java.lang.Long">
+        select r.* from uac_role as r left join uac_user_role uur on r.id = uur.role_id
+        <where>
+            uur.user_id = #{userId,jdbcType=BIGINT}
+        </where>
+    </select>
+</mapper>
