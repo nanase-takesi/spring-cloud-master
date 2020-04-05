@@ -29,9 +29,22 @@ public interface MinioStorageService {
      * @param bucket      bucket
      * @param inputStream inputStream
      * @param fileName    fileName
+     * @param size        size
      * @return 上传成功后返回生成的文件id；失败，返回null
      */
-    String upload(String bucket, InputStream inputStream, String fileName);
+    String upload(String bucket, InputStream inputStream, Long size, String fileName);
+
+    /**
+     * 上传文件
+     *
+     * @param bucket      bucket
+     * @param inputStream inputStream
+     * @param fileName    fileName
+     * @param size        size
+     * @param contentType contentType
+     * @return 上传成功后返回生成的文件id；失败，返回null
+     */
+    String upload(String bucket, InputStream inputStream, Long size, String fileName, String contentType);
 
     /**
      * 生成一个给HTTP PUT请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行上传，即使其所在的存储桶是私有的。这个presigned URL可以设置一个失效时间，默认值是7天。
@@ -42,6 +55,25 @@ public interface MinioStorageService {
      * @return url
      */
     String presignedUpload(String bucket, String fileName, Integer expiry);
+
+    /**
+     * 生成一个给HTTP GET请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行下载，即使其所在的存储桶是私有的。
+     *
+     * @param bucket     bucket
+     * @param objectName objectName
+     * @return Sting
+     */
+    String presignedGetObject(String bucket, String objectName);
+
+    /**
+     * 生成一个给HTTP GET请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行下载，即使其所在的存储桶是私有的。这个presigned URL可以设置一个失效时间，默认值是7天。
+     *
+     * @param bucket     bucket
+     * @param objectName objectName
+     * @param expires    expires
+     * @return Sting
+     */
+    String presignedGetObject(String bucket, String objectName, Integer expires);
 
     /**
      * 创建存储桶
@@ -85,5 +117,22 @@ public interface MinioStorageService {
      * @throws ErrorResponseException     ErrorResponseException
      */
     List<Bucket> listBucket() throws IOException, InvalidKeyException, NoSuchAlgorithmException, InsufficientDataException, InvalidResponseException, InternalException, NoResponseException, InvalidBucketNameException, XmlPullParserException, ErrorResponseException;
+
+    /**
+     * 删除bucket
+     *
+     * @param bucket bucket
+     * @throws IOException                IOException
+     * @throws InvalidKeyException        InvalidKeyException
+     * @throws NoSuchAlgorithmException   NoSuchAlgorithmException
+     * @throws InsufficientDataException  InsufficientDataException
+     * @throws InvalidResponseException   InvalidResponseException
+     * @throws InternalException          InternalException
+     * @throws NoResponseException        NoResponseException
+     * @throws InvalidBucketNameException InvalidBucketNameException
+     * @throws XmlPullParserException     XmlPullParserException
+     * @throws ErrorResponseException     ErrorResponseException
+     */
+    void deleteBucket(String bucket) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InsufficientDataException, InvalidResponseException, InternalException, NoResponseException, InvalidBucketNameException, XmlPullParserException, ErrorResponseException;
 
 }

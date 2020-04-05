@@ -11,7 +11,9 @@ import com.shengda.provider.service.BucketService;
 import com.shengda.query.BucketQuery;
 import com.shengda.vo.BucketVo;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +38,14 @@ public class BucketController extends BaseController {
     }
 
     @PostMapping(value = "/add")
-    public Wrapper addBucket(@RequestBody BucketDto bucketDto) {
+    public Wrapper<String> addBucket(@RequestBody BucketDto bucketDto) {
         bucketService.add(bucketDto);
+        return WrapMapper.ok();
+    }
+
+    @DeleteMapping(value = "/{id}/delete")
+    public Wrapper<String> deleteBucket(@PathVariable Long id) {
+        bucketService.delete(id);
         return WrapMapper.ok();
     }
 

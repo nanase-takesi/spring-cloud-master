@@ -24,6 +24,6 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     @Override
     public IPage<BrandVo> list(BrandQuery brandQuery) {
         IPage<BrandVo> page = new Page<>(brandQuery.getCurrent(), brandQuery.getPageSize());
-        return brandMapper.query(page, brandQuery);
+        return brandMapper.queryBrand(page, brandQuery);
     }
 }

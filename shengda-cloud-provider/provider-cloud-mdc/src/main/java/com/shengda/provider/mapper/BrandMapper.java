@@ -6,6 +6,7 @@ import com.shengda.provider.model.domain.Brand;
 import com.shengda.query.BrandQuery;
 import com.shengda.vo.BrandVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author takesi
@@ -21,5 +22,5 @@ public interface BrandMapper extends BaseMapper<Brand> {
      * @param brandQuery brandQuery
      * @return IPage<BrandVo>
      */
-    IPage<BrandVo> query(IPage<BrandVo> page, BrandQuery brandQuery);
+    IPage<BrandVo> queryBrand(IPage<BrandVo> page, @Param("query") BrandQuery brandQuery);
 }

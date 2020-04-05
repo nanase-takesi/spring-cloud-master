@@ -29,4 +29,10 @@ public interface BucketService extends IService<Bucket> {
      * @throws StorageException StorageException
      */
     void add(BucketDto bucketDto) throws StorageException;
+
+    /**
+     * 删除 bucket
+     * @param id id
+     */
+    void delete(Long id);
 }

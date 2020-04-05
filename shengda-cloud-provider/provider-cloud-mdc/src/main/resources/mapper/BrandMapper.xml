@@ -23,7 +23,19 @@
         update_time, version
     </sql>
 
-    <select id="query" resultType="com.shengda.vo.BrandVo">
+    <select id="queryBrand" resultType="com.shengda.vo.BrandVo">
         select * from mdc_brand
+        <where>
+            1 = 1
+            <if test="query.name != null and query.name != ''">
+                and name like concat('%', #{query.name,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="query.isFactory != null">
+                and is_factory = #{query.isFactory}
+            </if>
+            <if test="query.state != null">
+                and state = #{query.state}
+            </if>
+        </where>
     </select>
 </mapper>

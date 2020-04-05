@@ -1,5 +1,6 @@
 package com.shengda.mybatis;
 
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.shengda.mybatis.handler.DateMetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,11 @@ public class MybatisAutoConfigurer implements CommandLineRunner {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
+    }
+
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
     }
 
     @Override

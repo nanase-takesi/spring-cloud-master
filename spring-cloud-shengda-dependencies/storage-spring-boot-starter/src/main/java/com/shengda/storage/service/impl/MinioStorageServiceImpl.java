@@ -38,10 +38,15 @@ public class MinioStorageServiceImpl implements MinioStorageService {
     private final MinioClient minioClient;
 
     @Override
-    public String upload(String bucket, InputStream inputStream, String fileName) {
+    public String upload(String bucket, InputStream inputStream, Long size, String fileName) {
+        return this.upload(bucket, inputStream, size, fileName, null);
+    }
+
+    @Override
+    public String upload(String bucket, InputStream inputStream, Long size, String fileName, String contentType) {
         String objectName = StorageUtils.getFilePath(fileName);
         try {
-            minioClient.putObject(bucket, objectName, inputStream, 1L, null, null, null);
+            minioClient.putObject(bucket, objectName, inputStream, size, null, null, contentType);
             return objectName;
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -57,6 +62,26 @@ public class MinioStorageServiceImpl implements MinioStorageService {
         }
         try {
             return minioClient.presignedPutObject(bucket, "", expiry);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public String presignedGetObject(String bucket, String objectName) {
+        try {
+            return minioClient.presignedGetObject(bucket, objectName);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public String presignedGetObject(String bucket, String objectName, Integer expires) {
+        try {
+            return minioClient.presignedGetObject(bucket, objectName, expires);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
@@ -82,6 +107,15 @@ public class MinioStorageServiceImpl implements MinioStorageService {
     public List<Bucket> listBucket() throws IOException, InvalidKeyException, NoSuchAlgorithmException, InsufficientDataException, InvalidResponseException, InternalException, NoResponseException, InvalidBucketNameException, XmlPullParserException, ErrorResponseException {
         // 列出所有存储桶
         return minioClient.listBuckets();
+    }
+
+    @Override
+    public void deleteBucket(String bucket) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InsufficientDataException, InvalidResponseException, InternalException, NoResponseException, InvalidBucketNameException, XmlPullParserException, ErrorResponseException {
+        boolean fount = minioClient.bucketExists(bucket);
+
+        if (fount) {
+            minioClient.removeBucket(bucket);
+        }
     }
 
 }

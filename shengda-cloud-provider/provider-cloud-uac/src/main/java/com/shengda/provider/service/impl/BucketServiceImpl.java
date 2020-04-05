@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shengda.dto.BucketDto;
+import com.shengda.enums.UacBizErrorCode;
+import com.shengda.exception.UacBizException;
 import com.shengda.provider.mapper.BucketMapper;
 import com.shengda.provider.model.domain.Bucket;
 import com.shengda.provider.service.BucketService;
@@ -25,6 +27,7 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author takesi
@@ -63,6 +66,23 @@ public class BucketServiceImpl extends ServiceImpl<BucketMapper, Bucket> impleme
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new StorageException("创建bucket失败");
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = StorageException.class)
+    public void delete(Long id) throws StorageException {
+        Bucket bucket = bucketMapper.selectById(id);
+
+        if (!Objects.isNull(bucket)) {
+            try {
+                minioStorageService.deleteBucket(bucket.getName());
+                bucketMapper.deleteById(bucket);
+            } catch (Exception e) {
+                throw new StorageException(e.getMessage());
+            }
+        } else {
+            throw new UacBizException(UacBizErrorCode.RESOURCE_NOT_FOUNT);
         }
     }
 }

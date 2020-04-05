@@ -51,6 +51,10 @@
         </dependency>
         <dependency>
             <groupId>com.shengda</groupId>
+            <artifactId>storage-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shengda</groupId>
             <artifactId>provider-cloud-mdc-api</artifactId>
         </dependency>
     </dependencies>

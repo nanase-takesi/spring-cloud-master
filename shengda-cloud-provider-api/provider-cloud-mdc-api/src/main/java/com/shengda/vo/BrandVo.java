@@ -3,6 +3,7 @@ package com.shengda.vo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author takesi
@@ -54,5 +55,15 @@ public class BrandVo implements Serializable {
      * 状态
      */
     private Boolean state;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 
 }
