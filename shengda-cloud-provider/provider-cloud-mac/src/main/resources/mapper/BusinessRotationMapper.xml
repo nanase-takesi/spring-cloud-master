@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.BusinessRotationMapper">
+
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.BusinessRotation">
+        <!--@mbg.generated-->
+        <!--@Table mac_business_rotation-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="card_id" jdbcType="BIGINT" property="cardId"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="state" jdbcType="SMALLINT" property="state"/>
+        <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_id" jdbcType="BIGINT" property="createId"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, image_url, url, card_id, sort, `state`, remark, create_time, create_id,
+        update_time, version
+    </sql>
+
+    <select id="queryPage" resultType="com.shengda.vo.BusinessRotationVo">
+        select * from mac_business_rotation
+        <where>
+            1 = 1
+            <if test="query.name != null and query.name != ''">
+                and name like concat('%', #{query.name,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="query.state != null">
+                and state = #{query.state,jdbcType=SMALLINT}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <select id="queryByCardId" resultType="com.shengda.vo.BusinessRotationVo"
+            parameterType="java.lang.Long">
+        select * from mac_business_rotation
+        <where>
+            card_id = #{cardId,jdbcType=BIGINT}
+        </where>
+        order by sort desc, create_time desc
+    </select>
+
+</mapper>

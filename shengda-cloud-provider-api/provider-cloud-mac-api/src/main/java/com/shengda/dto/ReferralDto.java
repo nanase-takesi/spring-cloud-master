@@ -1,4 +1,4 @@
-package com.shengda.vo;
+package com.shengda.dto;
 
 import lombok.Data;
 
@@ -9,11 +9,9 @@ import java.io.Serializable;
  * @date 2019-12-26
  */
 @Data
-public class RecommendedVo implements Serializable {
+public class ReferralDto implements Serializable {
 
-    private static final long serialVersionUID = 784229306782159124L;
-
-    private Long id;
+    private static final long serialVersionUID = -4902828698052859708L;
 
     /**
      * 推荐内容名称

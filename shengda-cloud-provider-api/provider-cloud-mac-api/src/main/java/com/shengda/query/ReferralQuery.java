@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class RecommendedQuery extends BaseQuery {
+public class ReferralQuery extends BaseQuery {
 
     private static final long serialVersionUID = 3334687326990011024L;
 

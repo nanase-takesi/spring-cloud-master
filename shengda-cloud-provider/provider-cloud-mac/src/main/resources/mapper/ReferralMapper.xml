@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shengda.provider.mapper.ReferralMapper">
+
+    <resultMap id="BaseResultMap" type="com.shengda.provider.model.domain.Referral">
+        <!--@mbg.generated-->
+        <!--@Table mac_referral-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="image_url" jdbcType="VARCHAR" property="imageUrl"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="state" jdbcType="SMALLINT" property="state"/>
+        <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_id" jdbcType="BIGINT" property="createId"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, image_url, url, sort, `state`, remark, create_time, create_id, update_time,
+        version
+    </sql>
+
+    <select id="queryPage" resultType="com.shengda.vo.ReferralVo">
+        select * from mac_referral
+        <where>
+            1 = 1
+            <if test="referralQuery.name != null and referralQuery.name != ''">
+                and name like concat('%', #{referralQuery.name,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="referralQuery.state != null">
+                and state = #{referralQuery.state,jdbcType=SMALLINT}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+</mapper>

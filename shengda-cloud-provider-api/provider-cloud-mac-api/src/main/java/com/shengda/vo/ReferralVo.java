@@ -1,17 +1,20 @@
-package com.shengda.dto;
+package com.shengda.vo;
 
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author takesi
  * @date 2019-12-26
  */
 @Data
-public class RecommendedDto implements Serializable {
+public class ReferralVo implements Serializable {
 
-    private static final long serialVersionUID = -4902828698052859708L;
+    private static final long serialVersionUID = 784229306782159124L;
+
+    private Long id;
 
     /**
      * 推荐内容名称
@@ -42,5 +45,9 @@ public class RecommendedDto implements Serializable {
      * 备注
      */
     private String remark;
+
+    private Date createTime;
+
+    private Date updateTime;
 
 }

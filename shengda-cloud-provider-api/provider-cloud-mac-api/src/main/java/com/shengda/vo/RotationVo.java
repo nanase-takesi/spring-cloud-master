@@ -3,6 +3,7 @@ package com.shengda.vo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author takesi
@@ -44,5 +45,9 @@ public class RotationVo implements Serializable {
      * 备注
      */
     private String remark;
+
+    private Date createTime;
+
+    private Date updateTime;
 
 }

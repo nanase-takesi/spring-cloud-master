@@ -9,6 +9,36 @@ import com.shengda.base.enums.ErrorCodeEnum;
 public enum MacErrorCodeEnum implements ErrorCodeEnum {
 
     /**
+     * 资源不存在
+     */
+    MAC100600404 {
+        @Override
+        public int code() {
+            return 404;
+        }
+
+        @Override
+        public String msg() {
+            return "资源不存在";
+        }
+    },
+
+    /**
+     * 资源不存在
+     */
+    MAC100600500 {
+        @Override
+        public int code() {
+            return 500;
+        }
+
+        @Override
+        public String msg() {
+            return "系统出现错误";
+        }
+    },
+
+    /**
      * 新建系统公告失败
      */
     MAC100600001 {

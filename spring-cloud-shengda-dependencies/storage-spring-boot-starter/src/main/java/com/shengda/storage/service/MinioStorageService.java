@@ -49,12 +49,21 @@ public interface MinioStorageService {
     /**
      * 生成一个给HTTP PUT请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行上传，即使其所在的存储桶是私有的。这个presigned URL可以设置一个失效时间，默认值是7天。
      *
-     * @param bucket   bucket
-     * @param fileName fileName
-     * @param expiry   失效时间(以秒为单位), 默认是7天，不得大于7天
+     * @param bucket bucket
+     * @param ext    ext
+     * @param expiry 失效时间(以秒为单位), 默认是7天，不得大于7天
      * @return url
      */
-    String presignedUpload(String bucket, String fileName, Integer expiry);
+    String presignedUpload(String bucket, String ext, Integer expiry);
+
+    /**
+     * 生成一个给HTTP PUT请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行上传，即使其所在的存储桶是私有的。
+     *
+     * @param bucket bucket
+     * @param ext    ext
+     * @return url
+     */
+    String presignedUpload(String bucket, String ext);
 
     /**
      * 生成一个给HTTP GET请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行下载，即使其所在的存储桶是私有的。

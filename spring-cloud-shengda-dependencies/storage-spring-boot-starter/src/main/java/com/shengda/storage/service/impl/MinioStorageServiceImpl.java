@@ -14,6 +14,7 @@ import io.minio.messages.Bucket;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.xmlpull.v1.XmlPullParserException;
@@ -35,7 +36,8 @@ public class MinioStorageServiceImpl implements MinioStorageService {
 
     private static final Logger logger = LoggerFactory.getLogger(MinioStorageServiceImpl.class);
 
-    private final MinioClient minioClient;
+    @Autowired(required = false)
+    private MinioClient minioClient;
 
     @Override
     public String upload(String bucket, InputStream inputStream, Long size, String fileName) {
@@ -55,13 +57,25 @@ public class MinioStorageServiceImpl implements MinioStorageService {
     }
 
     @Override
-    public String presignedUpload(String bucket, String fileName, Integer expiry) {
+    public String presignedUpload(String bucket, String ext) {
+        String objectName = StorageUtils.getFilePath(ext);
+        try {
+            return minioClient.presignedPutObject(bucket, objectName);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public String presignedUpload(String bucket, String ext, Integer expiry) {
         final int days = 60 * 60 * 24 * 7;
         if (Objects.isNull(expiry) || expiry > days) {
             expiry = days;
         }
+        String objectName = StorageUtils.getFilePath(ext);
         try {
-            return minioClient.presignedPutObject(bucket, "", expiry);
+            return minioClient.presignedPutObject(bucket, objectName, expiry);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

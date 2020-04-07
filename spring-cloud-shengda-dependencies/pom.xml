@@ -47,6 +47,11 @@
                 <version>${spring-social.version}</version>
             </dependency>
             <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.shengda</groupId>
                 <artifactId>auth-client-spring-cloud-starter</artifactId>
                 <version>${project.version}</version>

@@ -41,6 +41,14 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shengda</groupId>
+            <artifactId>common-base</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.shengda</groupId>
             <artifactId>common-core</artifactId>
         </dependency>

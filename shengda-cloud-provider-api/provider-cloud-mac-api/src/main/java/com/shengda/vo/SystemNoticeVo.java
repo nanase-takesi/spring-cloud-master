@@ -3,6 +3,7 @@ package com.shengda.vo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author takesi
@@ -22,5 +23,9 @@ public class SystemNoticeVo implements Serializable {
     private Integer sort;
 
     private Short state;
+
+    private Date createTime;
+
+    private Date updateTime;
 
 }
