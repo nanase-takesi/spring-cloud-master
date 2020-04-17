@@ -11,8 +11,8 @@ public enum BrandState {
      */
     IN_USE {
         @Override
-        public Short getValue() {
-            return 1;
+        public Boolean getValue() {
+            return true;
         }
     },
 
@@ -21,11 +21,11 @@ public enum BrandState {
      */
     INVALID {
         @Override
-        public Short getValue() {
-            return 0;
+        public Boolean getValue() {
+            return false;
         }
     };
 
-    public abstract Short getValue();
+    public abstract Boolean getValue();
 
 }

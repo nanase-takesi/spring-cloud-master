@@ -40,6 +40,7 @@
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <transmittable.version>2.11.4</transmittable.version>
+        <pinyin4j.version>2.5.1</pinyin4j.version>
         <security-oauth2.version>2.3.8.RELEASE</security-oauth2.version>
         <spring-social.version>1.1.6.RELEASE</spring-social.version>
     </properties>

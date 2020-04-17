@@ -1,6 +1,7 @@
 package com.shengda.provider.model.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.shengda.mybatis.model.BaseEntity;
 import lombok.Data;
@@ -62,6 +63,7 @@ public class Brand extends BaseEntity {
     /**
      * 状态
      */
+    @TableLogic
     @TableField(value = "state")
     private Boolean state;
 

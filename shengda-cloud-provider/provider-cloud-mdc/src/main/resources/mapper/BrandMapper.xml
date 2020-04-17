@@ -38,4 +38,22 @@
             </if>
         </where>
     </select>
+
+    <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select * from mdc_brand
+        <where>
+            id = #{id,jdbcType=BIGINT}
+        </where>
+    </select>
+    <update id="updateStateById" parameterType="java.lang.Object">
+        update mdc_brand
+        <set>
+            state = #{state.value,jdbcType=BOOLEAN},
+            version = version + 1
+        </set>
+        <where>
+            id = #{id,jdbcType=BIGINT}
+            and version = #{version,jdbcType=INTEGER}
+        </where>
+    </update>
 </mapper>
